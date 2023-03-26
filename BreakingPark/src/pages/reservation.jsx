@@ -5,6 +5,7 @@ import ViewWeb from "../components/viewWeb";
 import ModalReservation from "../components/modalReservation";
 import { useState, useEffect } from "react";
 import ViewMobile from "../components/viewMobile";
+import ModalMap from "../components/modalMap";
 
 const Component = [
   {
@@ -44,6 +45,7 @@ const Component = [
 function reservation() {
   const [ScreenSize, setScreenSize] = useState({ width: 0, height: 0 });
   const [ModalReservations, setModalReservations] = useState(false);
+  const [ModalMaps, setModalMaps] = useState(false);
   const [Location, setLocation] = useState();
 
   useEffect(() => {
@@ -55,17 +57,25 @@ function reservation() {
       }));
     }
 
+    
     updateScreenSize(); 
-
+    
     window.addEventListener("resize", updateScreenSize);
-
+    
     return () => {
       window.removeEventListener("resize", updateScreenSize); 
     };
   }, []);
 
+  const maps = () =>{
+    setModalMaps(true);
+  }
+  
   return (
     <>
+    { ModalMaps && 
+      <ModalMap setModal={setModalMaps}/>
+    }
       {ModalReservations && (
         <ModalReservation setModal={setModalReservations} location={Location} />
       )}
@@ -94,7 +104,7 @@ function reservation() {
         {
             ScreenSize.width < 1024 && (
                 <div className="mr-4 ml-4 w-full h-[40px]">
-                    <button className="w-1/3 h-full font-bolder text-white text-[20px] underline underline-offset-1">Ver mapa</button>
+                    <button className="w-1/3 h-full font-bolder text-white text-[20px] underline underline-offset-1" onClick={maps}>Ver mapa</button>
                 </div>
             )
         }

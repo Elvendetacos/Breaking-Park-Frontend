@@ -10,10 +10,10 @@ function ModalReservation({setModal, location}) {
 
     return ( 
         <>
-        <div className="fixed h-screen w-screen bg-[#171B26] bg-opacity-80 z-10 overflow-hidden">
+        <div className="fixed h-[105vh] w-screen bg-[#171B26] bg-opacity-80 z-10 overflow-hidden">
             <div className="grid grid-cols-4 gap-4 ml-4 mr-4 lg:grid-cols-12 lg:gap-8 lg:ml-8 lg:mr-8 h-full">
                 <div className="flex justify-center items-center col-start-1 col-span-4 lg:col-start-4 lg:col-span-6">
-                    <div className="w-full h-[80%] bg-[#263744] grid-cols-4 gap-4 rounded-lg grid lg:grid-cols-6 lg:gap-8">
+                    <div className="w-full h-[70%] lg:h-[80%] animate-opac bg-[#263744] grid-cols-4 gap-4 rounded-lg grid lg:grid-cols-6 lg:gap-8">
                         <div className='col-start-1 col-span-4 lg:col-start-2 lg:col-span-4 h-full'>
                             <div className='flex justify-center items-center h-[10%]'>    
                             <p className='font-bolder text-white text-[30px]'>{`Informacion del lugar ${location}:`}</p>

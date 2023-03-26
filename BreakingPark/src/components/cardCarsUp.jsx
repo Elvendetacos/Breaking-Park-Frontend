@@ -14,18 +14,18 @@ function CardCarsUp({ item, state, setModal, setLocation }) {
         <div className="h-[30%] w-full">
           <button
             onClick={openModal}
-            className="h-full w-full bg-[#345262] rounded-xl lg:text-[35px] font-bolder text-white"
+            className="h-full w-full bg-[#345262] rounded-xl lg:text-[35px] font-bolder text-white "
           >
             {text}
           </button>
         </div>
         {state ? (
           <div className="flex justify-center items-center pt-8 pb-4 w-full lg:pt-8 lg:pb-4 lg:w-full h-[70%]">
-            <img src={Car} alt="" className="h-full rotate-0 object-contain" />
+            <img src={Car} alt="" className="h-full rotate-0 object-contain animate-wiggle" />
           </div>
         ) : (
           <div className="pt-8 pb-4 w-full lg:pt-8 lg:pb-4 lg:w-full h-[70%]">
-            <p className="h-full rotate-90 font-bolder flex justify-center items-center text-white text-[20px]">
+            <p className="h-full animate-text rotate-90 font-bolder flex justify-center items-center text-white text-[20px]">
               Disponible
             </p>
           </div>
