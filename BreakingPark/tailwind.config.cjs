@@ -9,23 +9,34 @@ module.exports = {
       'bolder': ['Bayon', 'sans-serif']
     },
     extend: {
+      gridTemplateRows: {
+        // Simple 8 row grid
+        '8': 'repeat(8, minmax(0, 1fr))',
+      },
       gridTemplateColumns: {
         '12r': 'repeat(12, minmax(0, 32px))',
       },
       keyframes:{
         wiggle : {
-          '0%': { height: '1rem'},
-          '10%': {  height: '5rem' },
-          '20%': { height: '10rem' },
+          '0%': { height: '10%'},
+          '10%': {  height: '20%' },
+          '20%': { height: '30%' },
         },
         text: {
-          '0%': {'font-size': '1px'}, 
-          '10%': {'font-size': '2px'} 
+          '0%': {'font-size': '10%'}, 
+          '10%': {'font-size': '20%'},
+          '20%': {'font-size': '30%'}
+        },
+        opac : {
+          '0%' : {'opacity': '0.1'},
+          '20%' : {'opacity': '0.5'},
+          '30%' : {'opacity': '1'},
         }
       },
       animation: {
         wiggle: 'wiggle 0.3s ease-out',
-        text: 'text 0.1s ease-out'
+        text: 'text 0.3s ease-out',
+        opac: 'opac 0.3s ease-out'
       }
     }
   },
