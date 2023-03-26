@@ -6,6 +6,7 @@ import ModalReservation from "../components/modalReservation";
 import { useState, useEffect } from "react";
 import ViewMobile from "../components/viewMobile";
 import ModalMap from "../components/modalMap";
+import PaymentModal from "../components/paymentModal";
 
 const Component = [
   {
@@ -44,9 +45,10 @@ const Component = [
 
 function reservation() {
   const [ScreenSize, setScreenSize] = useState({ width: 0, height: 0 });
-  const [ModalReservations, setModalReservations] = useState(false);
+  const [ModalReservations, setModalReservations] = useState(true);
   const [ModalMaps, setModalMaps] = useState(false);
   const [Location, setLocation] = useState();
+  const [ModalPayment, setModalPayment] = useState(true);
 
   useEffect(() => {
     //Se toma el tamaño actual de la pantalla
@@ -73,11 +75,14 @@ function reservation() {
   
   return (
     <>
+    {ModalPayment && 
+      <PaymentModal setModal={setModalPayment} setModalReservations={setModalReservations}/>
+    }
     { ModalMaps && 
       <ModalMap setModal={setModalMaps}/>
     }
       {ModalReservations && (
-        <ModalReservation setModal={setModalReservations} location={Location} />
+        <ModalReservation setModal={setModalReservations} location={Location} setModalPayment={setModalPayment} />
       )}
       <Header>
         <div className="lg:col-span-4 lg:col-start-1 flex justify-start items-center col-start-1 col-span-1">
@@ -103,7 +108,7 @@ function reservation() {
         </div>
         {
             ScreenSize.width < 1024 && (
-                <div className="mr-4 ml-4 w-full h-[40px]">
+                <div className="mr-4 ml-4 h-[40px]">
                     <button className="w-1/3 h-full font-bolder text-white text-[20px] underline underline-offset-1" onClick={maps}>Ver mapa</button>
                 </div>
             )

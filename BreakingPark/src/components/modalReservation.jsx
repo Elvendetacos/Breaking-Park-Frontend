@@ -1,8 +1,14 @@
 import Car from '../assets/images/car-left.png'
 import Arrow from '../assets/images/arrow.png'
 import WheelChair from '../assets/images/wheelchair.png'
+import Swal from 'sweetalert2'
 
-function ModalReservation({setModal, location}) {
+function ModalReservation({setModal, location, setModalPayment}) {
+
+
+    const Payment = () => {
+        setModalPayment(true)
+    }
 
     const closeModal = () =>{
         setModal(false)
@@ -36,11 +42,11 @@ function ModalReservation({setModal, location}) {
                                 <input type="time" className='ml-[10%] w-2/5 h-2/5 rounded-md font-bolder text-center text-white bg-[#345262] text-[20px]'/>
                             </div>
                             <div className='flex h-[7%] mt-[10%] justify-around'>
-                                <button className='w-1/3 h-full bg-[#51889D] text-white font-bolder text-[20px] rounded-md'>Aceptar</button>
+                                <button className='w-1/3 h-full bg-[#51889D] text-white font-bolder text-[20px] rounded-md' onClick={Payment}>Aceptar</button>
                                 <button className='w-1/3 h-full bg-[#51889D] text-white font-bolder text-[20px] rounded-md' onClick={closeModal}>Cancelar</button>
                             </div>
                             <div className='flex h-[10%] mt-[3%]'>
-                                <p className='text-white text-[15px] text-center'>Al Aceptar la reservación se entiende que sino se llega a ocupar no se devolvera el dinero de dicha reservación.</p>
+                                <p className='text-white text-[15px] text-center'>El pago de la reservacion se hara para tener una hora apartada una vez en el lugar se le cobrara por tiempo.</p>
                             </div>
                         </div>
                     </div>
