@@ -45,10 +45,10 @@ const Component = [
 
 function reservation() {
   const [ScreenSize, setScreenSize] = useState({ width: 0, height: 0 });
-  const [ModalReservations, setModalReservations] = useState(true);
+  const [ModalReservations, setModalReservations] = useState(false);
   const [ModalMaps, setModalMaps] = useState(false);
   const [Location, setLocation] = useState();
-  const [ModalPayment, setModalPayment] = useState(true);
+  const [ModalPayment, setModalPayment] = useState(false);
 
   useEffect(() => {
     //Se toma el tamaño actual de la pantalla
