@@ -1,19 +1,20 @@
 import Header from "../components/header";
 import Body from "../components/body";
-//import moneda from "../assets/images/coin.svg";
-//import carro from "../assets/images/car-front.svg";
-//import tacha from "../assets/images/x-circle.svg";
+import moneda from "../assets/images/coin.svg";
+import carro from "../assets/images/car-front.svg";
+import tacha from "../assets/images/x-circle.svg";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Home() {
   const hola = () => {
-    console.log("hola pendejo1");
+    console.log("xd");
   };
   const hola2 = () => {
-    console.log("hola pendejo2");
+    console.log("xd2");
   };
   const hola3 = () => {
-    console.log("hola pendejo3");
+    console.log("3");
   };
 
   const [cardID, setCardID] = useState(true);
@@ -26,12 +27,19 @@ function Home() {
             Breakig Park
           </button>
         </div>
+
+
+        <Link to="/home/SingIn" className="lg:col-span-2 lg:col-start-11 text-center flex justify-center items-center col-start-3">
         <div className="lg:col-span-2 lg:col-start-11 text-center flex justify-center items-center col-start-3">
           <button className="text-lg lg:text-4xl lg:font-bold">Registar</button>
         </div>
+        </Link>
+
+        <Link to="/home/reservation" className="lg:col-span-2 lg:col-start-9 lg:row-start-1 text-right flex justify-center items-center col-start-4">
         <div className="lg:col-span-2 lg:col-start-9 lg:row-start-1 text-right flex justify-center items-center col-start-4">
           <button className="text-lg lg:text-4xl lg:font-bold">Reservar</button>
         </div>
+        </Link>
       </Header>
 
       <Body>
@@ -53,15 +61,20 @@ function Home() {
                   </p>
                 </div>
               </div>
-
+              <Link to="/home/refill" className="lg:col-span-2 lg:col-start-3 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
               <div class="lg:col-span-2 lg:col-start-3 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
-                <img
+               
+                <img 
                   onClick={hola}
                   class="lg:h-4/6 h-3/4 w-full lg:w-full "
                   src={moneda}
                   alt="not found "
                 />
               </div>
+              </Link>
+
+
+              <Link to="/home/reservation" className="lg:col-span-2 lg:col-start-6 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
               <div class="lg:col-span-2 lg:col-start-6 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
                 <img
                   onClick={hola2}
@@ -70,7 +83,11 @@ function Home() {
                   alt="not found"
                 />
               </div>
+              </Link>
 
+
+
+              <Link to="/home/cancel" className="lg:col-span-2 lg:col-start-9 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
               <div class="lg:col-span-2 lg:col-start-9 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
                 <img
                   onClick={hola3}
@@ -79,13 +96,8 @@ function Home() {
                   alt="not found"
                 />
               </div>
-
-            {cardID &&
-              <div class="lg:col-span-8 lg:col-start-3 lg:row-start-6 col-start-1 col-span-4 flex justify-center items-center bg-[#51889D] rounded-lg h-[60px]">
-                <button className="font-bolder text-white text-[20px] lg:text-[35px]">Agregar una tarjeta</button>
-              </div>
-            }
-
+              </Link>
+           
             </div>
           </div>
         </div>

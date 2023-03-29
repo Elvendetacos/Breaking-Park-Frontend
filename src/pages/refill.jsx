@@ -1,8 +1,10 @@
 import Header from "../components/header";
 import Body from "../components/body";
-//import lol from "../assets/images/credit-card.png";
+import lol from "../assets/images/credit-card.png";
 import { PayPalButton } from "react-paypal-button-v2";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 //import { getUser } from './api';
 
 function Refills() {
@@ -35,9 +37,11 @@ function Refills() {
     <>
       <Header>
         <div className="lg:col-span-3 lg:col-start-1 lg:mr-auto flex justify-center items-center">
+          <Link to="/home">
           <button className="text-lg lg:text-4xl lg:font-bold">
             Breakig Park
           </button>
+          </Link>
         </div>
 
         <div className="lg:col-span-2 lg:col-start-11 lg:row-start-1 text-right flex justify-center items-center col-start-4">

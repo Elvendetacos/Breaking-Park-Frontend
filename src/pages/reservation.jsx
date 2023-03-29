@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import ViewMobile from "../components/viewMobile";
 import ModalMap from "../components/modalMap";
 import PaymentModal from "../components/paymentModal";
+import { Link } from "react-router-dom";
 
 const Component = [
   {
@@ -94,12 +95,19 @@ function reservation() {
       </Header>
       <Body>
         <div className="ml-4 mr-4  grid-cols-4 gap-4 h-[60px] lg:ml-[32px] lg:mr-[32px] lg:gap-8 lg:h-[100px] grid lg:grid-cols-12 c">
-          <div className="lg:col-start-1 lg:col-span-1 flex justify-center items-center">
+
+
+          <Link to="/home" >
+          <div >
             <img
               src={Arrow}
               className="h-3/4 w-3/4 lg:h-3/4 lg:w-3/4 invert cursor-pointer"
             />
           </div>
+          </Link>
+
+
+
           <div className="lg:col-start-5 lg:col-span-4 flex justify-center items-center col-span-2 col-start-2">
             <p className="font-bolder text-white lg:text-[30px] text-[20px] ">
               Selecciona un lugar

@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Header from "../components/header";
 import Body from "../components/body";
+import { Link } from "react-router-dom";
 
 
 
@@ -18,9 +19,18 @@ function CancelReservation() {
     return ( 
         <>
         <Header>
+
+
+
         <div className="lg:col-span-4 lg:col-start-1 flex justify-start items-center col-start-1 col-span-1">
+          <Link to="/home">
           <p className="lg:text-[30px] text-[20px] ">BREKING PARK</p>
+          </Link>
         </div>
+        
+
+
+
         <div className="lg:col-span-2 lg:col-start-11 flex justify-center items-center col-start-4 col-span-1">
           <p className="lg:text-center lg:text-[30px] text-[20px]" id="user">User</p>
         </div>

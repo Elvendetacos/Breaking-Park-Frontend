@@ -1,6 +1,6 @@
 import Header from "../components/header";
 import Body from "../components/body";
-//import jaja from "../assets/images/land.png";
+import jaja from "../assets/images/land.png";
 import { Link } from "react-router-dom";
 
 function handleClick() {
@@ -23,9 +23,13 @@ function App() {
         </div>
 
         <div className="lg:col-span-2 lg:col-start-11 lg:row-start-1 text-right flex justify-center items-center col-start-4">
+        
+        <Link to="/home/SingIn">
           <button className="text-lg lg:text-4xl lg:font-bold">
             Iniciar Sesion
           </button>
+          </Link>
+
         </div>
       </Header>
       <Body>

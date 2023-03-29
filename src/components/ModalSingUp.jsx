@@ -1,7 +1,28 @@
 //import Modal from "../conteiners/Modal";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function SingUp() {
+
+
+    const [credentials, setCredentials] = useState({
+        username: "",
+        email: "",
+        password: "",
+    });
+
+    const handleUserEmail = (e) => {
+        
+    }
+
+    const handleUserPassword = (e) => {
+
+    };
+
+    const register = () => {
+
+    }
+
     return ( 
         <>
         <div className="grid w-full grid-cols-4 lg:grid-cols-12 lg:gap-8 h-[110vh] bg-[#171B26] font-bolder">
@@ -14,14 +35,15 @@ function SingUp() {
                 <form className="lg:col-start-2 lg:col-span-4 h-auto ">
                 <div className="relative m-3">
                 <label className="text-xl text-white top-1 cursor-text">CORREO: </label>
-                <input className="bg-[#345262] text-base w-[100%] border-b py-1 focus:outline-none mb-10" type="text"></input>
+                <input value={credentials.email} className="bg-[#345262] text-base w-[100%] border-b py-1 focus:outline-none mb-10" type="text" onChange={handleUserEmail}></input>
                 </div>
                 <div className="relative m-3">
                 <label className="text-xl text-white top-1 cursor-text">CONTRASEÑA: </label>
-                <input className="bg-[#345262] w-[100%] text-base border-b py-1 focus:outline-none mb-10"></input>
+                <input value={credentials.password} className="bg-[#345262] w-[100%] text-base border-b py-1 focus:outline-none mb-10" onChange={handleUserPassword}></input>
                 </div>
                 <div className="">
-                    <div className="text-white bg-[#51889D] text-lg text-center rounded-lg m-5 lg:col-start-6 lg:col-span-7 lg:h-[70px] flex justify-center items-center mt-30">
+                    <div className="text-white bg-[#51889D] text-lg text-center rounded-lg m-5 lg:col-start-6 lg:col-span-7 lg:h-[70px] flex justify-center items-center mt-30" 
+                    onChange={handleUserPassword}>
                        <button>INICIAR SESION</button>
                    </div>
                 </div>
