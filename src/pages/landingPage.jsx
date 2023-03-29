@@ -1,6 +1,6 @@
 import Header from "../components/header";
 import Body from "../components/body";
-import jaja from "../assets/images/land.png";
+//import jaja from "../assets/images/land.png";
 import { Link } from "react-router-dom";
 
 function handleClick() {

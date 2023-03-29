@@ -1,8 +1,8 @@
 import Header from "../components/header";
 import Body from "../components/body";
-import moneda from "../assets/images/coin.svg";
-import carro from "../assets/images/car-front.svg";
-import tacha from "../assets/images/x-circle.svg";
+//import moneda from "../assets/images/coin.svg";
+//import carro from "../assets/images/car-front.svg";
+//import tacha from "../assets/images/x-circle.svg";
 import { useState, useEffect } from "react";
 
 function Home() {

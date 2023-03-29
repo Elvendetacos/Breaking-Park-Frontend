@@ -1,6 +1,6 @@
 import Header from "../components/header";
 import Body from "../components/body";
-import lol from "../assets/images/credit-card.png";
+//import lol from "../assets/images/credit-card.png";
 import { PayPalButton } from "react-paypal-button-v2";
 import { useEffect, useState } from "react";
 //import { getUser } from './api';

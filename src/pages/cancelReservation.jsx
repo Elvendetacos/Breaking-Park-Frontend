@@ -1,6 +1,4 @@
-import { useState } from "react";
-import ModalCancel from "../components/ModalCancel";
-import Modal from "../container/Modal";
+import { useState } from "react"
 import Header from "../components/header";
 import Body from "../components/body";
 
@@ -9,6 +7,7 @@ import Body from "../components/body";
 function CancelReservation() {
     const [showModalito, setShowModalito] = useState(false);
 
+    
 
     const reservas = [
         { nombre: 'Reserva 1', fecha: '2023-04-01', hora: '14:00', lugar: "A-1" },
@@ -38,8 +37,8 @@ function CancelReservation() {
           <p className="text-center">
             Fecha: {reserva.fecha} - Hora: {reserva.hora} - Lugar: {reserva.lugar}
           </p>
-          <button onClick={()=> setShowModalito(true)}  className="bg-[#51889D] text-center w-full">Cancelar</button>
-          <Modal mostrar={showModalito} onClose={() => setShowModalito(false)}><ModalCancel onClose={setShowModalito}/></Modal>
+          <button  className="bg-[#51889D] text-center w-full">Cancelar</button>
+         
         </div>
       ))}
     </div>

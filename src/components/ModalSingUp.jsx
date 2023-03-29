@@ -2,36 +2,43 @@
 import { Link } from "react-router-dom";
 
 function SingUp() {
-    //const [showModalito, setShowModalito] = useState(false);
     return ( 
-        //<Modal mostrar={showModalito} onClose={() => setShowModalito(false)}>
-        <div className="py-6 px-6 lg:px-8 text-center">
+        <>
+        <div className="grid w-full grid-cols-4 lg:grid-cols-12 lg:gap-8 h-[110vh] bg-[#171B26] font-bolder">
+            <div className="lg:col-start-5 lg:col-span-4 lg:gap-10 col-span-4 col-start-1 h-[80%] mt-auto mb-auto ml-4 mr-4">
+            <div className="bg-[#345262] h-[80%] p-2 rounded-lg text-while lg:col-start-4 lg:col-span-6 gap-4">
             <div>
-                <p className="text-5lx text-center text-white gap-4 m-6 px6">INICIO DE SESION</p>
+                <p className="text-[30px] text-center text-white gap-4 m-6 px6">INICIO DE SESION</p>
             </div>
             <div className="">
-                <form className="lg:col-start-2 lg:col-span-4 ">
-                <div className="relative">
-                <label className="text-2xl text-white absolute top-1 cursor-text">CORREO: </label>
-                <input className="bg-[#345262] text-base w-[100%] border-b py-1 focus:outline-none" type="text"></input>
+                <form className="lg:col-start-2 lg:col-span-4 h-auto ">
+                <div className="relative m-3">
+                <label className="text-xl text-white top-1 cursor-text">CORREO: </label>
+                <input className="bg-[#345262] text-base w-[100%] border-b py-1 focus:outline-none mb-10" type="text"></input>
                 </div>
-                <div className="relative">
-                <label className="text-2xl text-white absolute top-1 cursor-text">CONTRASEÑA: </label>
-                <input className="bg-[#345262] w-[100%] text-base border-b py-1 focus:outline-none"></input>
+                <div className="relative m-3">
+                <label className="text-xl text-white top-1 cursor-text">CONTRASEÑA: </label>
+                <input className="bg-[#345262] w-[100%] text-base border-b py-1 focus:outline-none mb-10"></input>
                 </div>
                 <div className="">
-                    <div className="bg-[#51889D] text-lg text-center rounded-lg m-5 lg:col-start-6 lg:col-span-7">
+                    <div className="text-white bg-[#51889D] text-lg text-center rounded-lg m-5 lg:col-start-6 lg:col-span-7 lg:h-[70px] flex justify-center items-center mt-30">
                        <button>INICIAR SESION</button>
                    </div>
                 </div>
                 <div>
-                    <p className="text-[12px] text-center m-1">
+                    <p className="text-white text-[12px] lg:text-[15px] text-center m-1">
                     ¿No tienes cuenta? <Link to="/ModalSingIn">Registrate</Link>
                     </p>
                 </div>
             </form>
             </div>
         </div>
+            </div>
+            
+        </div>
+        </>
+        
+        
        // </Modal>
      );
 }
