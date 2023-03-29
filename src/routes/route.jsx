@@ -5,6 +5,7 @@ import IdCard from "../pages/idCard";
 import Refill from "../pages/refill";
 import Reservation from "../pages/reservation";
 import CancelReservation from "../pages/cancelReservation";
+import Admin from "../pages/Admin";
 
 function route() {
     return ( 
@@ -16,6 +17,8 @@ function route() {
                 <Route path="/home/refill" element={<Refill/>}></Route>
                 <Route path="/home/cancel" element={<CancelReservation/>}></Route>
                 <Route path="/home/Card" element={<IdCard/>}></Route>
+                <Route path="/admin" element={<Admin/>}></Route>
+
             </Routes>
         </BrowserRouter>
      );
