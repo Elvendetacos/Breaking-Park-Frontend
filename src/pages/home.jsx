@@ -44,29 +44,29 @@ function Home() {
 
       <Body>
         <div className="bg-[#171B26] h-[84vh]">
-          <div class="lg:ml-8 lg:mr-8 ml-4 mr-4">
-            <div class="grid lg:grid-cols-12 lg:h-[748px] lg:grid-rows-6 lg:gap-x-8 lg:gap-y-0  grid-cols-4  gap-4 ">
-              <div class="bg-[#51889D] lg:col-span-8 mt-4 lg:mt-0 lg:col-start-3 flex lg:row-start-2 rounded-lg lg:h-80 h-[140px]   items-center col-span-4 col-start-1 w-full">
-                <p class="font-bolder text-white lg:text-[5vw] lg:w-[60%]  text-center w-[60%] text-[25px]">
+          <div className="lg:ml-8 lg:mr-8 ml-4 mr-4">
+            <div className="grid lg:grid-cols-12 lg:h-[748px] lg:grid-rows-6 lg:gap-x-8 lg:gap-y-0  grid-cols-4  gap-4 ">
+              <div className="bg-[#51889D] lg:col-span-8 mt-4 lg:mt-0 lg:col-start-3 flex lg:row-start-2 rounded-lg lg:h-80 h-[140px]   items-center col-span-4 col-start-1 w-full">
+                <p className="font-bolder text-white lg:text-[5vw] lg:w-[60%]  text-center w-[60%] text-[25px]">
                   El vende tacos
                 </p>
 
-                <div class="w-[40%] lg:h-full flex flex-col ">
-                  <p class="text-white flex lg:text-[7vw] justify-center items-end h-[65%] lg:h-[75%] text-[25px] font-bolder">
+                <div className="w-[40%] lg:h-full flex flex-col ">
+                  <p className="text-white flex lg:text-[7vw] justify-center items-end h-[65%] lg:h-[75%] text-[25px] font-bolder">
                     $0.90
                   </p>
-                  <p class="text-white lg:text-[1.5vw]  font-bolder justify-center h-[35%] lg:h-[15%] flex items-start text-[10]">
+                  <p className="text-white lg:text-[1.5vw]  font-bolder justify-center h-[35%] lg:h-[15%] flex items-start text-[10]">
                     {" "}
                     Saldo disponible{" "}
                   </p>
                 </div>
               </div>
               <Link to="/home/refill" className="lg:col-span-2 lg:col-start-3 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
-              <div class="lg:col-span-2 lg:col-start-3 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
+              <div className="lg:col-span-2 lg:col-start-3 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
                
                 <img 
                   onClick={hola}
-                  class="lg:h-4/6 h-3/4 w-full lg:w-full "
+                  className="lg:h-4/6 h-3/4 w-full lg:w-full "
                   src={moneda}
                   alt="not found "
                 />
@@ -75,10 +75,10 @@ function Home() {
 
 
               <Link to="/home/reservation" className="lg:col-span-2 lg:col-start-6 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
-              <div class="lg:col-span-2 lg:col-start-6 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
+              <div className="lg:col-span-2 lg:col-start-6 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
                 <img
                   onClick={hola2}
-                  class="lg:h-4/6 h-3/4 w-full lg:w-full"
+                  className="lg:h-4/6 h-3/4 w-full lg:w-full"
                   src={carro}
                   alt="not found"
                 />
@@ -88,10 +88,10 @@ function Home() {
 
 
               <Link to="/home/cancel" className="lg:col-span-2 lg:col-start-9 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
-              <div class="lg:col-span-2 lg:col-start-9 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
+              <div className="lg:col-span-2 lg:col-start-9 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
                 <img
                   onClick={hola3}
-                  class="lg:h-4/6 h-3/4 w-full lg:w-full"
+                  className="lg:h-4/6 h-3/4 w-full lg:w-full"
                   src={tacha}
                   alt="not found"
                 />

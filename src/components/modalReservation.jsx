@@ -2,9 +2,14 @@ import Car from '../assets/images/car-left.png'
 import Arrow from '../assets/images/arrow.png'
 import WheelChair from '../assets/images/wheelchair.png'
 import Swal from 'sweetalert2'
+// import Contexto from "../context/context";
+//const SockJS = require("sockjs-client");
+//const { over } = require("stompjs");
+
 
 function ModalReservation({setModal, location, setModalPayment}) {
 
+    //const {sessionId, setSesionId } = useContext(Contexto);
 
     const Payment = () => {
         setModalPayment(true)
@@ -13,6 +18,33 @@ function ModalReservation({setModal, location, setModalPayment}) {
     const closeModal = () =>{
         setModal(false)
     }
+
+//  const connect = () => {
+//   let Sock = new SockJS("http://ec2-100-24-11-98.compute-1.amazonaws.com:8080/ws");
+//   stompClient = over(Sock);
+//   console.log("FIRST CONNECTION");
+//   console.log(stompClient.connected);
+//   stompClient.connect({}, onConnected, onError);
+// };
+// const onConnected = () => {
+//   var createReservation = {
+//     userId: AGREGAR_EL_ID_DEL_USER,
+//     isoDateTime: Extraer la fecha de la reservacion
+//     slotNumber: Obtener el Numero del slot (example: 1-A || 1A)
+//     sessionId: sessionId
+//   };
+
+//   // Modificar el envío a la direccion de crear reservacion
+//   stompClient.send("/ag/reserve", {}, JSON.stringify(createReservation));
+//   console.log(stompClient.connected);
+
+//   subscription = stompClient.subscribe(
+//     "/response/" + sessionId + "/private",
+//     onMessageReceived
+//   );
+//   subscription = stompClient.subscribe("/exUsers", onMessageReceived);  
+// };
+
 
     return ( 
         <>

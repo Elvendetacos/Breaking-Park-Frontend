@@ -1,10 +1,83 @@
 //import * as React from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+// import SockJS from "sockjs-client";
 
+var stompClient = null;
 
 function SingIn() {
 
-    
+    //const URI = "http://ec2-100-24-11-98.compute-1.amazonaws.com:8080"
+
+    const getSession = () => {
+
+       /* var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({
+            "email": "admin@admin.com",
+            "password": "admin"
+        });
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+
+        fetch("http://ec2-100-24-11-98.compute-1.amazonaws.com:8080/token", requestOptions)
+            .then(response => {
+                console.log(response.headers.get("Authorization"))
+            })
+            .then(result => {
+                console.log(result);
+            })
+            .catch(error => console.log('error', error));*/
+        //const credentials = `${"admin"}:${"admin"}`;
+        //const encodedCredentials = Buffer.from(credentials).toString("base64");
+        /*fetch("http://localhost:8080/token", {
+          method: "POST",
+          mode: "cors",
+          cache: "no-cache",
+          credentials: "same-origin",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            email: "admin@admin.com",
+            password: "admin"
+          }),
+        })
+          .then((response) =>  console.log(response.headers))
+          .then((data) => data2 = data)
+          .catch((error) => console.error("Error:", error));*/
+          //const uwu = data2.get('Content-Type')
+          //console.log(hola)
+          //console.log(uwu)
+      
+          /*var raw = "";
+
+          var requestOptions = {
+            method: 'GET',
+            mode: "cors",
+            cache: "no-cache",
+            credentials: "same-origin",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: "Bearer Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBhZG1pbi5jb20iLCJleHAiOjE2ODI2OTMyMjYsIm5hbWUiOiJhZG1pbiJ9.LwwbZKzhUNhF4oAIEZFdPPu06V0CM47yFnZ9q4snLfA"
+            },*/
+            //body: raw,
+            //redirect: 'follow'
+          /*};
+          
+          fetch("http://ec2-100-24-11-98.compute-1.amazonaws.com:8080/session/session-id", requestOptions)
+            .then(response => response.text())
+            .then(result => console.log(result))
+            .catch(error => console.log('error', error));*/
+      };
 
     return (
         <>

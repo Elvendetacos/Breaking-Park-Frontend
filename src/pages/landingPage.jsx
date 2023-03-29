@@ -2,12 +2,67 @@ import Header from "../components/header";
 import Body from "../components/body";
 import jaja from "../assets/images/land.png";
 import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import Contexto from "../context/context";
 
 function handleClick() {
   console.log("El botón fue presionado");
 }
 
 function App() {
+
+  const {sessionId, setSesionId } = useContext(Contexto);
+
+  const [token, setToken] = useState("")
+  const [session, setSession] = useState("")
+
+  const getSession = () => {
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      "email": "admin@admin.com",
+      "password": "admin"
+    });
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch("http://ec2-100-24-11-98.compute-1.amazonaws.com:8080/token", requestOptions)
+      .then(response => {
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", response.headers.get("Authorization"));
+        myHeaders.append("Content-Type", "application/json");
+    
+        var requestOptions = {
+          method: 'GET',
+          headers: myHeaders,
+          redirect: 'follow'
+        };
+    
+        fetch("http://ec2-100-24-11-98.compute-1.amazonaws.com:8080/session/session-id", requestOptions)
+          .then(response => response.json())
+          .then(result => {
+            setSesionId({code: result.data.code})
+          })
+          .catch(error => console.log('error', error));
+      }).then(result => {
+        (sessionId != '') && console.log(sessionId)
+
+      }).catch(error => console.log('error', error));
+
+
+  }
+
+  useEffect(() =>{
+    getSession();
+  },[])
+
   return (
     <>
       <Header>
@@ -23,11 +78,11 @@ function App() {
         </div>
 
         <div className="lg:col-span-2 lg:col-start-11 lg:row-start-1 text-right flex justify-center items-center col-start-4">
-        
-        <Link to="/home/SingIn">
-          <button className="text-lg lg:text-4xl lg:font-bold">
-            Iniciar Sesion
-          </button>
+
+          <Link to="/home/SingIn">
+            <button className="text-lg lg:text-4xl lg:font-bold">
+              Iniciar Sesion
+            </button>
           </Link>
 
         </div>
