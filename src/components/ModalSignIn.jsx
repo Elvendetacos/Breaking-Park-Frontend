@@ -61,6 +61,7 @@ export default function SignIn() {
   const onResponse = (payload) => {
     console.log(payload)
     let payloadData = JSON.parse(payload.body);
+    setSessionEntity({...sessionEntity, userId: payloadData.data.id});
     if(payloadData.success){
         Swal.fire({
             title: "Exito",

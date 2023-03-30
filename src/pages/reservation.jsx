@@ -50,6 +50,8 @@ function reservation() {
   const [ModalMaps, setModalMaps] = useState(false);
   const [Location, setLocation] = useState();
   const [ModalPayment, setModalPayment] = useState(false);
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
 
   useEffect(() => {
     //Se toma el tamaño actual de la pantalla
@@ -77,13 +79,13 @@ function reservation() {
   return (
     <>
     {ModalPayment && 
-      <PaymentModal setModal={setModalPayment} setModalReservations={setModalReservations}/>
+      <PaymentModal location={location} time={time} date={date} setModal={setModalPayment} setModalReservations={setModalReservations}/>
     }
     { ModalMaps && 
       <ModalMap setModal={setModalMaps}/>
     }
       {ModalReservations && (
-        <ModalReservation setModal={setModalReservations} location={Location} setModalPayment={setModalPayment} />
+        <ModalReservation setDate={setDate} setTime={setTime} setModal={setModalReservations} location={Location} setModalPayment={setModalPayment} />
       )}
       <Header>
         <div className="lg:col-span-4 lg:col-start-1 flex justify-start items-center col-start-1 col-span-1">

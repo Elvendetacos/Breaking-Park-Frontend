@@ -1,13 +1,20 @@
 import Swal from "sweetalert2";
+import Contexto from "../context/context";
+import { useContext } from "react";
+import SockJS from "sockjs-client";
+import { over } from "stompjs";
+var stompClient = null;
+var subscription = null;
+function PaymentModal({date, time, location, setModal, setModalReservations}) {
 
-function PaymentModal({setModal, setModalReservations}) {
+  const {sessionEntity, setSessionEntity} = useContext(Contexto);
 
     const CloseModal = () =>{
         setModal(false)
     }
 
     const Success =()=>{
-                Swal.fire({
+            Swal.fire({
             position: 'center',
             icon: 'success',
             text: '',
@@ -36,11 +43,47 @@ function PaymentModal({setModal, setModalReservations}) {
             Swal.showLoading();
           },
           willClose: () => {
+            connect();
             clearInterval(timerInterval);
             Success()
           },
         });
     }
+
+      const URI = "http://ec2-100-24-11-98.compute-1.amazonaws.com:8080";
+    
+      const connect = () => {
+        let Sock = new SockJS(URI + "/ws");
+        stompClient = over(Sock);
+        stompClient.connect({}, onConnected, onError);
+      };
+    
+      const onConnected = () => {
+        var createReservation = {
+          user_id: sessionEntity.userId,
+          iso_date_time: date + "T" + time,
+          slot_number: location,
+          session_id: sessionEntity.code,
+        };
+    
+        stompClient.send("/ag/reserve", {}, JSON.stringify(createReservation));
+        console.log(stompClient.connected);
+    
+        subscription = stompClient.subscribe(
+          "/response/" + sessionEntity.code + "/private",
+          onResponse
+        );
+      };
+
+      const onResponse = (payload) => {
+        console.log(payload)
+        let payloadData = JSON.parse(payload.body);
+        console.log(payloadData);
+      }
+
+      const onError = (e) => {
+        console.log(e);
+      };
 
   return (
     <>

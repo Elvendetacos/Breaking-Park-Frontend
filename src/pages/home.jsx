@@ -98,7 +98,7 @@ function Home() {
               <div className="lg:col-span-2 lg:col-start-3 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
                
                 <img 
-                  onClick={hola}
+                  onClick={tacha}
                   className="lg:h-4/6 h-3/4 w-full lg:w-full "
                   src={moneda}
                   alt="not found "
@@ -110,7 +110,7 @@ function Home() {
               <Link to="/home/reservation" className="lg:col-span-2 lg:col-start-6 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
               <div className="lg:col-span-2 lg:col-start-6 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
                 <img
-                  onClick={hola2}
+                  onClick={tacha}
                   className="lg:h-4/6 h-3/4 w-full lg:w-full"
                   src={carro}
                   alt="not found"
@@ -123,7 +123,7 @@ function Home() {
               <Link to="/home/cancel" className="lg:col-span-2 lg:col-start-9 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
               <div className="lg:col-span-2 lg:col-start-9 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
                 <img
-                  onClick={hola3}
+                  onClick={tacha}
                   className="lg:h-4/6 h-3/4 w-full lg:w-full"
                   src={tacha}
                   alt="not found"
