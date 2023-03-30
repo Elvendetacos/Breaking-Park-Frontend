@@ -11,10 +11,7 @@ function handleClick() {
 
 function App() {
 
-  const {sessionId, setSesionId } = useContext(Contexto);
-
-  const [token, setToken] = useState("")
-  const [session, setSession] = useState("")
+  const {sessionEntity, setSessionEntity} = useContext(Contexto);
 
   const getSession = () => {
 
@@ -48,77 +45,73 @@ function App() {
         fetch("http://ec2-100-24-11-98.compute-1.amazonaws.com:8080/session/session-id", requestOptions)
           .then(response => response.json())
           .then(result => {
-            setSesionId({code: result.data.code})
-          })
-          .catch(error => console.log('error', error));
-      }).then(result => {
-        (sessionId != '') && console.log(sessionId)
+            setSessionEntity({...sessionEntity, 
+              "code": result.data.code
+            })
+            console.log(sessionEntity);
+          }).catch(error => console.log('error', error));
+    }).catch(error => console.log('error', error));
 
-      }).catch(error => console.log('error', error));
-
-
-  }
+}
 
   useEffect(() =>{
-    getSession();
+    if(sessionEntity.code === ""){
+      getSession();
+    }
   },[])
 
   return (
     <>
+
+
       <Header>
         <div className="lg:col-span-3 lg:col-start-1 lg:mr-auto flex justify-center items-center">
-          <Link className="lg:col-span-3 lg:col-start-1 lg:mr-auto flex justify-center items-center">
-            <button
-              className="text-lg lg:text-4xl lg:font-bold"
-              onClick={handleClick}
-            >
-              Breakig Park
-            </button>
-          </Link>
+          <button className="text-lg lg:text-4xl lg:font-bold">
+            Breakig Park
+          </button>
         </div>
 
-        <div className="lg:col-span-2 lg:col-start-11 lg:row-start-1 text-right flex justify-center items-center col-start-4">
 
-          <Link to="/home/SingIn">
-            <button className="text-lg lg:text-4xl lg:font-bold">
-              Iniciar Sesion
-            </button>
-          </Link>
-
+        <Link to="/home/SignIn" className="lg:col-span-2 lg:col-start-11 text-center flex justify-center items-center col-start-3">
+        <div className="lg:col-span-2 lg:col-start-11 text-center flex justify-center items-center col-start-3">
+          <button className="text-lg lg:text-2xl lg:font-bold">Iniciar Sesion</button>
         </div>
+        </Link>
+
+        <Link to="/home/SignUp" className="lg:col-span-2 lg:col-start-9 lg:row-start-1 text-right flex justify-center items-center col-start-4">
+        <div className="lg:col-span-2 lg:col-start-9 lg:row-start-1 text-right flex justify-center items-center col-start-4">
+          <button className="text-lg lg:text-2xl lg:font-bold">Registrate</button>
+        </div>
+        </Link>
       </Header>
+
       <Body>
-        <div className="bg-[#171B26] h-[84vh]">
+        <div className="bg-[#171B26] h-[87vh]">
           <div className=" lg:ml-8 lg:mr-8 ml-4 mr-4">
-            <div className="grid lg:grid-cols-12 lg:h-[748px] lg:grid-rows-2 lg:gap-8  grid-cols-4  gap-4 grid-rows-6">
+            <div className="grid lg:grid-cols-12 lg:h-[737px] lg:grid-rows-2 lg:gap-8  grid-cols-4  gap-4 grid-rows-6">
               <div className="lg:col-span-12 lg:col-start-1 flex justify-center items-center row-start-1  col-start-1 col-span-4  ">
                 <div className="lg:row-span-1 lg:row-start-1 ">
-                  <p className="font-bolder text-white lg:text-[70px]  text-center text-[20px] lg:h-4">
-                    ¿Cansado de no encontrar lugar en el <br /> estacionamiento
+                  <p className="font-bolder text-white lg:text-[50px]  text-center text-[21px] lg:h-4">
+                     ¿Cansado de no encontrar lugar en el <br /> estacionamiento
                     ?{" "}
                   </p>
                 </div>
               </div>
 
-              <div className="lg:col-span-6 lg:col-start-2   lg:row-start-4 row-start-4 col-start-1 col-span-4 ">
-                <p className="font-bolder text-white lg:h-[full] lg:text-[40px]  flex text-[20px] text-center">
+              <div className="lg:col-span-6 lg:col-start-2  lg:row-start-3 row-start-4 col-start-1 col-span-4 ">
+                <p className="font-bolder text-white lg:h-[full] lg:text-[30px]  flex text-[21px] text-center ">
                   {" "}
-                  " ¡Di adios a la busqueda eterna de estacionamiento y hola{" "}
+                  <br /><br /> " ¡Di adios a la busqueda eterna de estacionamiento y hola{" "}
                   <br /> a la comodidad con nuestro servicio!"
                 </p>
+
               </div>
 
-              <div className="lg:col-span-2 lg:col-start-4 text-right  col-start-2 col-span-2 lg:row-start-5 row-start-6">
-                <Link to="/home">
-                  <button
-                    onClick={handleClick}
-                    className="bg-[#51889D] text-white w-full h-[70px] rounded-lg lg:text-[35px]">
-                    Comenzar
-                  </button>
-                </Link>
+              <div className="lg:col-span-2 lg:col-start-3 text-right  col-start-3 col-span-2 lg:row-start-7 row-start-6">
               </div>
-              <div className="lg:col-span-5 lg:col-start-8 lg:row-start-4 row-start-2 col-start-2  lg:h-2/3 col-span-2 lg:h-90 w-90">
-                <img className="h-[100]  w-90  " src={jaja} alt="" />
+              
+              <div className="lg:col-span-5 lg:col-start-8 lg:row-start-3 row-start-2 col-start-2 row-span-2   lg:h-2/3 col-span-2 lg:h-90 w-90">
+                <br /><br /><img className="lg:h-90 lg:w-90 h-[100%]  w-[full]  "  src={jaja} alt="" />
               </div>
             </div>
           </div>

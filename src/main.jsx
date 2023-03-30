@@ -1,8 +1,11 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom'
 import Route from './routes/route'
 import './index.css'
+window.global = window;
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <Route/>
-)
+ReactDOM.render(<Route/>, document.getElementById('root'))
+
+
+
+

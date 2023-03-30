@@ -3,19 +3,59 @@ import Body from "../components/body";
 import moneda from "../assets/images/coin.svg";
 import carro from "../assets/images/car-front.svg";
 import tacha from "../assets/images/x-circle.svg";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
+import Contexto from "../context/context";
+import SockJS from "sockjs-client";
+import { over } from "stompjs";
+import Swal from "sweetalert2";
 
+var stompClient = null;
 function Home() {
-  const hola = () => {
-    console.log("xd");
+
+  const {sessionEntity, setSessionEntity} = useContext(Contexto);
+  const URI = "http://ec2-100-24-11-98.compute-1.amazonaws.com:8080";
+
+  const connect = () => {
+    let sock = new SockJS(URI + "/ws");
+    stompClient = over(sock);
+    stompClient.connect({}, onConnected, onError);
   };
-  const hola2 = () => {
-    console.log("xd2");
+
+  const onConnected = () => {
+    console.log("[INFO] - stomp conected");
+    stompClient.subscribe(
+      "/response/" + sessionEntity.code + "/private",
+      onResponse
+    );
+      if(sessionEntity.walletCode !== ""){
+        stompClient.send("/ag/sign-in", {}, JSON.stringify({
+          wallet_code: sessionEntity.walletCode,
+          session_id: sessionEntity.code
+        }));
+      }
   };
-  const hola3 = () => {
-    console.log("3");
+
+  const onError = (e) => {
+    console.log(e);
   };
+
+  const stompInit = () => {
+    console.log("[INFO] - Initializing stomp");
+    connect();
+  };
+
+  const onResponse = (payload) => {
+    console.log(payload)
+    let payloadData = JSON.parse(payload.body);
+    if(payloadData.success){
+      setSessionEntity({...sessionEntity, "cash": payload.data.cash})
+    }
+  }
+
+  useState(() => {
+    stompInit();
+  }, [])
 
   const [cardID, setCardID] = useState(true);
 
@@ -27,13 +67,6 @@ function Home() {
             Breakig Park
           </button>
         </div>
-
-
-        <Link to="/home/SingIn" className="lg:col-span-2 lg:col-start-11 text-center flex justify-center items-center col-start-3">
-        <div className="lg:col-span-2 lg:col-start-11 text-center flex justify-center items-center col-start-3">
-          <button className="text-lg lg:text-4xl lg:font-bold">Registar</button>
-        </div>
-        </Link>
 
         <Link to="/home/reservation" className="lg:col-span-2 lg:col-start-9 lg:row-start-1 text-right flex justify-center items-center col-start-4">
         <div className="lg:col-span-2 lg:col-start-9 lg:row-start-1 text-right flex justify-center items-center col-start-4">
@@ -48,12 +81,12 @@ function Home() {
             <div className="grid lg:grid-cols-12 lg:h-[748px] lg:grid-rows-6 lg:gap-x-8 lg:gap-y-0  grid-cols-4  gap-4 ">
               <div className="bg-[#51889D] lg:col-span-8 mt-4 lg:mt-0 lg:col-start-3 flex lg:row-start-2 rounded-lg lg:h-80 h-[140px]   items-center col-span-4 col-start-1 w-full">
                 <p className="font-bolder text-white lg:text-[5vw] lg:w-[60%]  text-center w-[60%] text-[25px]">
-                  El vende tacos
+                  {sessionEntity.name}
                 </p>
 
                 <div className="w-[40%] lg:h-full flex flex-col ">
                   <p className="text-white flex lg:text-[7vw] justify-center items-end h-[65%] lg:h-[75%] text-[25px] font-bolder">
-                    $0.90
+                    {sessionEntity.cash}
                   </p>
                   <p className="text-white lg:text-[1.5vw]  font-bolder justify-center h-[35%] lg:h-[15%] flex items-start text-[10]">
                     {" "}
