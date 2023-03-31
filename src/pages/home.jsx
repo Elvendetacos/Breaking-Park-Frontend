@@ -28,6 +28,7 @@ function Home() {
       "/response/" + sessionEntity.code + "/private",
       onResponse
     );
+    console.log(sessionEntity)
       if(sessionEntity.walletCode !== ""){
         stompClient.send("/ag/sign-in", {}, JSON.stringify({
           wallet_code: sessionEntity.walletCode,
@@ -49,15 +50,13 @@ function Home() {
     console.log(payload)
     let payloadData = JSON.parse(payload.body);
     if(payloadData.success){
-      setSessionEntity({...sessionEntity, "cash": payload.data.cash})
+      setSessionEntity({...sessionEntity, "cash": parseFloat(payload.data.cash)})
     }
   }
 
   useState(() => {
     stompInit();
   }, [])
-
-  const [cardID, setCardID] = useState(true);
 
   return (
     <>
@@ -81,12 +80,12 @@ function Home() {
             <div className="grid lg:grid-cols-12 lg:h-[748px] lg:grid-rows-6 lg:gap-x-8 lg:gap-y-0  grid-cols-4  gap-4 ">
               <div className="bg-[#51889D] lg:col-span-8 mt-4 lg:mt-0 lg:col-start-3 flex lg:row-start-2 rounded-lg lg:h-80 h-[140px]   items-center col-span-4 col-start-1 w-full">
                 <p className="font-bolder text-white lg:text-[5vw] lg:w-[60%]  text-center w-[60%] text-[25px]">
-                  {sessionEntity.name}
+                  {sessionEntity.userName}
                 </p>
 
                 <div className="w-[40%] lg:h-full flex flex-col ">
                   <p className="text-white flex lg:text-[7vw] justify-center items-end h-[65%] lg:h-[75%] text-[25px] font-bolder">
-                    {sessionEntity.cash}
+                    {sessionEntity.cash + "$"}
                   </p>
                   <p className="text-white lg:text-[1.5vw]  font-bolder justify-center h-[35%] lg:h-[15%] flex items-start text-[10]">
                     {" "}
@@ -96,13 +95,15 @@ function Home() {
               </div>
               <Link to="/home/refill" className="lg:col-span-2 lg:col-start-3 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
               <div className="lg:col-span-2 lg:col-start-3 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
-               
                 <img 
-                  onClick={tacha}
                   className="lg:h-4/6 h-3/4 w-full lg:w-full "
                   src={moneda}
                   alt="not found "
                 />
+                <label 
+                className="text-white lg:text-[1.6vw]  
+                font-bolder justify-center h-[35%] 
+                lg:h-[15%] flex items-center text-[10]">recargar</label>
               </div>
               </Link>
 
@@ -110,11 +111,14 @@ function Home() {
               <Link to="/home/reservation" className="lg:col-span-2 lg:col-start-6 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
               <div className="lg:col-span-2 lg:col-start-6 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
                 <img
-                  onClick={tacha}
                   className="lg:h-4/6 h-3/4 w-full lg:w-full"
                   src={carro}
                   alt="not found"
                 />
+                <label 
+                className="text-white lg:text-[1.6vw]  
+                font-bolder justify-center h-[35%] 
+                lg:h-[15%] flex items-center text-[10]">reservar</label>
               </div>
               </Link>
 
@@ -123,7 +127,6 @@ function Home() {
               <Link to="/home/cancel" className="lg:col-span-2 lg:col-start-9 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
               <div className="lg:col-span-2 lg:col-start-9 col-start-1 col-span-4 lg:row-start-5 items-center flex bg-[#51889D] rounded-lg h-[60px]">
                 <img
-                  onClick={tacha}
                   className="lg:h-4/6 h-3/4 w-full lg:w-full"
                   src={tacha}
                   alt="not found"

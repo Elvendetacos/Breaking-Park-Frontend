@@ -47,6 +47,7 @@ export default function SignIn() {
       session_id: sessionEntity.code,
     };
     stompClient.send("/ag/sign-in", {}, JSON.stringify(signInRequest));
+    parseInt
   };
 
   const onError = (e) => {
