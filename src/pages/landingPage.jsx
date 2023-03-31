@@ -1,7 +1,7 @@
 import Header from "../components/header";
 import Body from "../components/body";
 import jaja from "../assets/images/land.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import Contexto from "../context/context";
 
@@ -61,6 +61,12 @@ function App() {
     }
   },[])
 
+  const navigate = useNavigate()
+
+  const holacomo = () =>{
+    navigate("/admin")
+  }
+
   return (
     <>
 
@@ -112,7 +118,7 @@ function App() {
               </div>
               
               <div className="lg:col-span-5 lg:col-start-8 lg:row-start-3 row-start-2 col-start-2 row-span-2   lg:h-2/3 col-span-2 lg:h-90 w-90">
-                <br /><br /><img className="lg:h-90 lg:w-90 h-[100%]  w-[full]  "  src={jaja} alt="" />
+                <br /><br /><img className="lg:h-90 lg:w-90 h-[100%]  w-[full]  "  src={jaja} alt="" onClick={holacomo}/>
               </div>
             </div>
           </div>
