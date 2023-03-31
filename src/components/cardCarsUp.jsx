@@ -1,22 +1,22 @@
 import Car from "../assets/images/car.png";
 
-function CardCarsUp({ item, state, setModal, setLocation }) {
-  let text = `B-${item}`;
+function CardCarsUp({state, place, setModal, setLocation}) {
+
 
   const openModal = () => {
     setModal(true);
-    setLocation(text);
+    setLocation(place);
   };
 
   return (
     <>
-      <div className="lg:col-start-3 col-span-1 h-full lg:col-span-1 lg:h-full bg-gradient-to-b from-[#263744] rounded-xl">
+      <div className="lg:col-start-3 col-span-1 h-[90%] lg:col-span-1 lg:h-[90%] bg-gradient-to-b from-[#263744] rounded-xl">
         <div className="h-[30%] w-full">
           <button
             onClick={openModal}
-            className="h-full w-full bg-[#345262] rounded-xl lg:text-[35px] font-bolder text-white "
+            className="h-full w-full bg-[rgb(52,82,98)] rounded-xl text-[20px] lg:text-[35px] font-bolder text-white"
           >
-            {text}
+            {place}
           </button>
         </div>
         {state ? (

@@ -8,8 +8,8 @@ import Swal from "sweetalert2";
 
 var stompClient = null;
 export default function SignIn() {
-  const URI = "http://ec2-100-24-11-98.compute-1.amazonaws.com:8080";
-    //const URI = "http://localhost:8080"
+  //const URI = "http://ec2-54-157-239-178.compute-1.amazonaws.com:8080";
+  const URI = "http://ec2-54-157-239-178.compute-1.amazonaws.com:8080";
   const navigate = useNavigate();
   const {sessionEntity, setSessionEntity} = useContext(Contexto);
   const [credentials, setCredentials] = useState({
@@ -36,10 +36,7 @@ export default function SignIn() {
 
   const onConnected = () => {
     console.log("[INFO] - stomp conected");
-    stompClient.subscribe(
-      "/response/" + sessionEntity.code + "/private",
-      onResponse
-    );
+    stompClient.subscribe("/response/" + sessionEntity.code + "/private/users",onResponse);
     console.log(credentials);
     let signInRequest = {
       email: credentials.email,
@@ -62,13 +59,13 @@ export default function SignIn() {
   const onResponse = (payload) => {
     console.log(payload)
     let payloadData = JSON.parse(payload.body);
-    setSessionEntity({...sessionEntity, userId: payloadData.data.id});
     if(payloadData.success){
         Swal.fire({
             title: "Exito",
             text: "verificacion exitosa"
         }, "success").then(() => {
-          setSessionEntity({...sessionEntity, 
+          setSessionEntity({...sessionEntity,
+            "userId": parseInt(payloadData.data.id),
             "userName": payloadData.data.name,
             "email": payloadData.data.email,
             "walletCode": payloadData.data.walletCode});
@@ -98,8 +95,8 @@ export default function SignIn() {
                 </label>
                 <input
                   value={credentials.email}
-                  className="bg-[#345262] text-base w-[100%] border-b py-1 focus:outline-none mb-10"
-                  type="text"
+                  className="bg-[#345262] text-base text-white w-[100%] border-b py-1 focus:outline-none mb-10"
+                  type="email"
                   style={{ fontFamily: 'Arial' }}
                   onChange={handleUserEmail}
                 ></input>
@@ -109,9 +106,9 @@ export default function SignIn() {
                   CONTRASEÑA:{" "}
                 </label>
                 <input
-                  type="text"
+                  type="password"
                   value={credentials.password}
-                  className="bg-[#345262] w-[100%] text-base border-b py-1 focus:outline-none mb-10"
+                  className="bg-[#345262] w-[100%] text-white text-base border-b py-1 focus:outline-none mb-10"
                   onChange={handleUserPassword}
                   style={{ fontFamily: 'Arial' }}
                 ></input>

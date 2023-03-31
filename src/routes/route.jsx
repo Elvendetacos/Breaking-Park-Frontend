@@ -9,16 +9,17 @@ import SignUp from "../components/ModalSignUp";
 import SignIn from "../components/ModalSignIn"
 import Context from '../context/context'
 import { useState } from "react";
+import Admin from "../pages/Admin";
 
 function route() {
 
     const [sessionEntity, setSessionEntity] = useState({
-        id: 0,
         code: "",
         userName: "",
         email: "",
         cash: 0,
         walletCode: "",
+        userId: 0
     });
 
     return ( 
@@ -32,7 +33,8 @@ function route() {
                     <Route path="/home/cancel" element={<CancelReservation/>}></Route>
                     <Route path="/home/Card" element={<IdCard/>}></Route>
                     <Route path="/home/SignUp" element={<SignUp/>}></Route>
-                    <Route path="/home/SignIn" element={<SignIn/>}></Route>                  
+                    <Route path="/home/SignIn" element={<SignIn/>}></Route>
+                    <Route path="/admin" element={<Admin/>}></Route>                  
                 </Routes>
             </Context.Provider>
         </BrowserRouter>

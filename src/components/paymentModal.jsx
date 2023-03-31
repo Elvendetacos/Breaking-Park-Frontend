@@ -12,7 +12,7 @@ function PaymentModal({date, time, location, setModal, setModalReservations}) {
     const CloseModal = () =>{
         setModal(false)
     }
-
+    
     const Success =()=>{
             Swal.fire({
             position: 'center',
@@ -50,7 +50,7 @@ function PaymentModal({date, time, location, setModal, setModalReservations}) {
         });
     }
 
-      const URI = "http://ec2-100-24-11-98.compute-1.amazonaws.com:8080";
+      const URI = "http://ec2-54-157-239-178.compute-1.amazonaws.com:8080";
     
       const connect = () => {
         let Sock = new SockJS(URI + "/ws");
@@ -59,7 +59,7 @@ function PaymentModal({date, time, location, setModal, setModalReservations}) {
       };
     
       const onConnected = () => {
-        var createReservation = {
+        let createReservation = {
           user_id: sessionEntity.userId,
           iso_date_time: date + "T" + time,
           slot_number: location,

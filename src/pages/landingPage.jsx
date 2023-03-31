@@ -29,8 +29,9 @@ function App() {
       body: raw,
       redirect: 'follow'
     };
-
-    fetch("http://ec2-100-24-11-98.compute-1.amazonaws.com:8080/token", requestOptions)
+//http://ec2-100-24-11-98.compute-1.amazonaws.com:8080/token
+//http://ec2-100-24-11-98.compute-1.amazonaws.com:8080/session/session-id
+    fetch("http://ec2-54-157-239-178.compute-1.amazonaws.com:8080/token", requestOptions)
       .then(response => {
         var myHeaders = new Headers();
         myHeaders.append("Authorization", response.headers.get("Authorization"));
@@ -42,7 +43,7 @@ function App() {
           redirect: 'follow'
         };
     
-        fetch("http://ec2-100-24-11-98.compute-1.amazonaws.com:8080/session/session-id", requestOptions)
+        fetch("http://ec2-54-157-239-178.compute-1.amazonaws.com:8080/session/session-id", requestOptions)
           .then(response => response.json())
           .then(result => {
             setSessionEntity({...sessionEntity, 

@@ -10,8 +10,8 @@ import Swal from "sweetalert2";
 export default function SignUp() {
   let stompClient = null;
   const navigate = useNavigate();
-  const URI = "http://ec2-100-24-11-98.compute-1.amazonaws.com:8080"
-  //const URI = "http://localhost:8080"
+  //const URI = "http://ec2-54-157-239-178.compute-1.amazonaws.com:8080"
+  const URI = "http://ec2-54-157-239-178.compute-1.amazonaws.com:8080"
   const {sessionEntity, setSessionEntity} = useContext(Contexto);
   const [credentials, setCredentials] = useState({
     username: "",
@@ -43,7 +43,7 @@ export default function SignUp() {
 
   const onConnected = () => {
     console.log("[INFO] - stomp conected");
-    stompClient.subscribe("/response/" + sessionEntity.code + "/private", onResponse);
+    stompClient.subscribe("/response/" + sessionEntity.code + "/private/users", onResponse);
     let createRequest = {
       name: credentials.username,
       email: credentials.email,
@@ -99,8 +99,8 @@ export default function SignUp() {
                   </label>
                   <input
                     value={credentials.email} onChange={handleEmail}
-                    className="bg-[#345262] text-base w-[100%] border-b py-1 focus:outline-none "
-                    type="text"
+                    className="bg-[#345262] text-base w-[100%] border-b py-1 focus:outline-none text-white"
+                    type="email"
                     style={{ fontFamily: 'Arial' }}
                   ></input>
                 </div>
@@ -108,7 +108,7 @@ export default function SignUp() {
                   <label  className="text-xl text-white top-1 cursor-text">
                     CONTRASEÑA:
                   </label>
-                  <input value={credentials.password} onChange={handlePass} className="bg-[#345262] w-[100%] text-base border-b py-1 focus:outline-none mb-10" style={{ fontFamily: 'Arial' }}></input>
+                  <input type="password" value={credentials.password} onChange={handlePass} className="bg-[#345262] w-[100%] text-base border-b py-1 focus:outline-none mb-10 text-white" style={{ fontFamily: 'Arial' }}></input>
                 </div>
                 <div className="">
                   <div className="text-white bg-[#51889D] text-lg text-center rounded-lg m-5 lg:col-start-6 lg:col-span-7 lg:h-[70px] flex justify-center items-center mt-30">
