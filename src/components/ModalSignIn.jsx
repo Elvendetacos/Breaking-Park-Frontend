@@ -124,7 +124,7 @@ export default function SignIn() {
               </div>
               <div>
                 <p className="text-white text-[12px] lg:text-[15px] text-center m-1">
-                  ¿No tienes cuenta? <Link to="/home/SingUp">Registrate</Link>
+                  ¿No tienes cuenta? <Link to="/home/SignUp">Registrate</Link>
                 </p>
               </div>
             </div>
